@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <!-- ***** Products Area Starts ***** -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Our Latest Products</h2>
+                        <span>Check out all of our products.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+<section class="section" id="products">
+
+        <div class="container">
+            <div class="row">
+
+{% for product in product_list %}
+
+ {% if product.picture %}
+            <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <div class="hover-content">
+                                <ul>
+                                    <li><a href="{% url 'product_detail' product.PRDSlug %}"><i class="fa fa-eye"></i></a></li>
+                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <img src="{{product.picture.url}}" alt="{{Product.get_absolute_url}">
+                        </div>
+                        <div class="down-content">
+                            <h4>{{ product.name }}</h4>
+                            <span>{{product.Price}}</span>
+                            <ul class="stars">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+      {% else %}
+            <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <div class="hover-content">
+                                <ul>
+                                    <li><a href="{% url 'product_detail' product.PRDSlug %}"><i class="fa fa-eye"></i></a></li>
+                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <img src="{% static '/assets/images/on-C100969_Image_01.jpeg' %}" alt="{{Product.get_absolute_url}">
+                        </div>
+                        <div class="down-content">
+                            <h4>{{ product.name }}</h4>
+                            <span>{{product.Price}}</span>
+                            <ul class="stars">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+{% endif %}
+{% endfor %}
+
+<div class="m-4">
+    <nav>
+        <ul class="pagination justify-content-center">
+            {% if product_list.has_other_pages %}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        {% if product_list.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{product_list.previous_page_number}}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% for pages in product_list.paginator.page_range %}
+                            {% if product_list.number == pages %}
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">{{pages}}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{pages}}">{{pages}}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if product_list.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{product_list.next_page_number}}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock content %}

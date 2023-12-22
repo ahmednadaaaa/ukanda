@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner" id="top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <div class="thumb">
+                            <div class="inner-content">
+                                <h4>We Are Hexashop</h4>
+                                <span></span>
+                                <div class="main-border-button">
+                                    <a href="{% url 'shop' %}">Purchase Now!</a>
+                                </div>
+                            </div>
+                            <img src="{% static '/assets/images/left-banner-image.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Women</h4>
+                                            <span>Best Clothes For Women</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Women</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <div class="main-border-button">
+                                                    <a href="category/women/">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{% static '/assets/images/baner-right-image-01.jpg' %}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Men</h4>
+                                            <span>Best Clothes For Men</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Men</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <div class="main-border-button">
+                                                    <a href="category/men/">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{% static '/assets/images/baner-right-image-02.jpg' %}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Kids</h4>
+                                            <span>Best Clothes For Kids</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Kids</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <div class="main-border-button">
+                                                    <a href="category/kids/">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{% static '/assets/images/baner-right-image-03.jpg' %}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Accessories</h4>
+                                            <span>Best Trend Accessories</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Accessories</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <div class="main-border-button">
+                                                    <a href="category/accessories/">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{% static '/assets/images/baner-right-image-04.jpg' %}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+    <!-- ***** Men Area Starts ***** -->
+
+
+
+
+
+
+
+
+
+<section class="section" id="products">
+
+        <div class="container">
+            <div class="row">
+
+{% for product in product_list %}
+
+ {% if product.picture %}
+            <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <div class="hover-content">
+                                      <div class="productContainer">
+        <div class="thumbnail">
+
+        </div>
+                                <ul>
+                                    <li><a href="{% url 'product_detail' product.PRDSlug %}"><i class="fa fa-eye"></i></a></li>
+                                    <li>
+                                        <button  value="{{product.id}}"><i class="fa fa-shopping-cart"></i></button>
+
+                                    </li>
+                                </ul>
+                            </div>
+                                          </div>
+
+                            <img src="{{product.picture.url}}" alt="{{Product.get_absolute_url}">
+                        </div>
+                        <div class="down-content">
+                            <h4>{{ product.name }}</h4>
+                            <span>{{product.Price}}</span>
+                            <ul class="stars">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+      {% else %}
+            <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <div class="hover-content">
+                                <ul>
+                                    <li><a href="{% url 'product_detail' product.PRDSlug %}"><i class="fa fa-eye"></i></a></li>
+  <li>
+                                        <button  value="{{product.id}}"><i class="fa fa-shopping-cart"></i></button>
+
+                                    </li>                                </ul>
+                            </div>
+                            <img src="{% static '/assets/images/on-C100969_Image_01.jpeg' %}" alt="{{Product.get_absolute_url}">
+                        </div>
+                        <div class="down-content">
+                            <h4>{{ product.name }}</h4>
+                            <span>{{product.Price}}</span>
+                            <ul class="stars">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+{% endif %}
+
+{% endfor %}
+
+<div class="m-4">
+    <nav>
+        <ul class="pagination justify-content-center">
+            {% if product_list.has_other_pages %}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        {% if product_list.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{product_list.previous_page_number}}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% for pages in product_list.paginator.page_range %}
+                            {% if product_list.number == pages %}
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">{{pages}}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{pages}}">{{pages}}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if product_list.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{product_list.next_page_number}}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ***** Subscribe Area Ends ***** -->
+
+{% endblock content %}
